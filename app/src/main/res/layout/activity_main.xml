@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/z"
+    android:background="@color/mainground"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/l"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/ground">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="17.5dp"
+            android:src="@drawable/main_search" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/Hshs"
+            android:textColor="@color/black"
+            android:textSize="@dimen/Twenty" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="17.5dp"
+            android:src="@drawable/main_notify" />
+    </RelativeLayout>
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_below="@+id/l"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Homefragment"
+            android:gravity="center_horizontal"/>
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/Home_Bottom"
+        android:layout_width="match_parent"
+        android:layout_height="47.5dp"
+        android:layout_alignParentBottom="true">
+
+        <RadioGroup
+            android:id="@+id/Home_RGroup"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            android:orientation="horizontal"
+            android:weightSum="5">
+
+            <RadioButton
+                android:id="@+id/Home_Btn_News"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/nav_btn_home_selected"
+                android:paddingTop="13dp" />
+
+            <RadioButton
+                android:id="@+id/Fiction_Btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawablePadding="1dp"
+                android:drawableTop="@drawable/nav_btn_fenlei_unselected"
+                android:gravity="center"
+                android:paddingTop="13dp" />
+
+            <RadioButton
+                android:id="@+id/Rankind_Btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawablePadding="3dp"
+                android:drawableTop="@drawable/nav_btn_paihang_unselected"
+                android:gravity="center"
+                android:paddingTop="13dp"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/Appreciate_Btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/nav_btn_shoucang_unselected"
+                android:gravity="center"
+                android:paddingTop="13dp" />
+
+            <RadioButton
+                android:id="@+id/Mine_Btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:button="@null"
+                android:drawableTop="@drawable/nav_btn_personal_unselected"
+                android:gravity="center"
+                android:paddingTop="13dp"
+                />
+        </RadioGroup>
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
