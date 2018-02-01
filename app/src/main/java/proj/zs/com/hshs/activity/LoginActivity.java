@@ -3,10 +3,14 @@ package proj.zs.com.hshs.activity;
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,10 +40,21 @@ public class LoginActivity extends BaseActivity {
     private SharedPreferences.Editor mEditor;
 
     private ProgressDialog progressDialog;
-
+    private static boolean isExit = false;
     private final int FAILURE = 0;
+    private final int BACK = 0;
 
     private final int SUCCESS = 1;
+    private Handler mHandler = new Handler() {
+
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if (msg.what == 0) {
+                isExit = false;
+            }
+        }
+    };
     @Override
     protected int layoutId() {
         return R.layout.login_activity;
@@ -58,6 +73,27 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void loadData() {
 
+    }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            exit();
+            return false;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    private void exit() {
+        if (!isExit) {
+            isExit = true;
+            Toast.makeText(LoginActivity.this, "再次点击退出绘声绘色",
+                    Toast.LENGTH_SHORT).show();
+            // 利用handler延迟发送更改状态信息
+            mHandler.sendEmptyMessageDelayed(BACK, 2000);
+        } else {
+            finish();
+            System.exit(0);
+        }
     }
 
     @Override

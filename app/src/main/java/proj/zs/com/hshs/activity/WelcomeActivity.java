@@ -32,12 +32,14 @@ import proj.zs.com.hshs.utils.SPUtils;
 
 public class WelcomeActivity extends Activity implements AdContract.View {
     int timeCount = 0;
-    @BindView(R.id.welcome)
-    ImageView welcome;
+//    @BindView(R.id.welcome)
+//    ImageView welcome;
+    private ImageView welcome;
     @BindView(R.id.tv_second)
     TextView tvSecond;
-    @BindView(R.id.layout_skip)
-    LinearLayout layoutSkip;
+//    @BindView(R.id.layout_skip)
+//    LinearLayout layoutSkip;
+    private LinearLayout layoutSkip;
     private LoginCheckBean loginCheckBean;
     boolean continueCount = true;
 
@@ -59,6 +61,8 @@ public class WelcomeActivity extends Activity implements AdContract.View {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcome_acticvity);
+        welcome=findViewById(R.id.welcome);
+        layoutSkip=findViewById(R.id.layout_skip);
         ButterKnife.bind(this);
         pAd = new AdPresenterImpl();
         pAd.attachView((AdContract.View) this);
