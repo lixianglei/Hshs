@@ -8,6 +8,17 @@ import android.content.Context;
  */
 
 public class BaseApplication extends Application {
+
+    public static String getToken() {
+        return token;
+    }
+
+    public static void setToken(String token) {
+        BaseApplication.token = token;
+    }
+
+    private static String token = "";
+
     /**
      * 维护一个全局的context对象
      */
@@ -25,26 +36,7 @@ public class BaseApplication extends Application {
         return myApplication;
     }
 
-    /**
-     * 获取当前的用户对象
-     *
-     * @param currentUser
-     */
-//    public UserInfo getCurrentUser() {
-//        UserInfo user = currentUser;
-//        if (user != null) {
-//            return user;
-//        }
-//        return null;
-//    }
 
-    /**
-     * 设置当前的用户对象
-     *
-     */
-//    public void setCurrentUser(UserInfo currentUser) {
-//        this.currentUser = currentUser;
-//    }
 
     /**
      * 定义一个标记

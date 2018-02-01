@@ -7,73 +7,175 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
-import android.view.Window;
+import android.text.TextUtils;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-import butterknife.internal.Utils;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+import butterknife.OnClick;
 import proj.zs.com.hshs.R;
-import proj.zs.com.hshs.base.BaseActivity;
+import proj.zs.com.hshs.base.BaseApplication;
+import proj.zs.com.hshs.model.bean.LoginCheckBean;
+import proj.zs.com.hshs.prcenter.AdPresenterImpl;
+import proj.zs.com.hshs.utils.L;
+import proj.zs.com.hshs.utils.NetUtils;
+import proj.zs.com.hshs.utils.SPUtils;
 
 /**
  * Created by zengshi on 2018/1/31.
  */
 
-public class WelcomeActivity extends Activity {
-    private String url="";
-    private ImageView imageView;
-    Bitmap bitmap=null;
+public class WelcomeActivity extends Activity implements AdContract.View {
+    int timeCount = 0;
+    @BindView(R.id.welcome)
+    ImageView welcome;
+    @BindView(R.id.tv_second)
+    TextView tvSecond;
+    @BindView(R.id.layout_skip)
+    LinearLayout layoutSkip;
+    private LoginCheckBean loginCheckBean;
+    boolean continueCount = true;
+
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            countNum();
+            if (continueCount) {
+                handler.sendMessageDelayed(handler.obtainMessage(-1), 1000);
+            }
+        }
+    };
+    private Bitmap bitmap;
+    private AdPresenterImpl pAd;
+    private int initTimeCount;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcome_acticvity);
-        imageView=findViewById(R.id.welcome);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        //开启一个子线程，进行网络操作，等待返回结果，用handler通知UI
-//        new Thread(networkTask).start();
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                Intent intent=new Intent(WelcomeActivity.this,LoginActivity.class);
-//                startActivity(intent);
-//                WelcomeActivity.this.finish();
-//
-//            }
-//        },2000);
-//        final Handler handler=new Handler(){
-//            @Override
-//            public void handleMessage(Message msg) {
-//                super.handleMessage(msg);
-//                Bundle data =msg.getData();
-//                Bitmap bitmap=data.getParcelable("bitmap");
-//                //UI界面的更新操作
-//                imageView.setImageBitmap(bitmap);
-//            }
-//        };
-//        /**
-//         * 网络相关的子线程
-//         */
-//        Runnable networkTask=new Runnable() {
-//            @Override
-//            public void run() {
-//                //在这里进行网络请求操作
-//                Message message=new Message();
-//                Bundle data=new Bundle();
-//                Bitmap bitmap= proj.zs.com.hshs.utils.Utils.getBitmap(url);
-//                data.putParcelable("bitmap",bitmap);
-//                message.setData(data);
-//                handler.sendMessage(message);
-//            }
-//        };
+        ButterKnife.bind(this);
+        pAd = new AdPresenterImpl();
+        pAd.attachView((AdContract.View) this);
+        initTimeCount = 6;
+        loginCheckBean = new LoginCheckBean();
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        if (NetUtils.isConnected(WelcomeActivity.this)) {
+            pAd.getLoginCheck();
+        }
+//        layoutSkip.setVisibility(View.INVISIBLE);
+        handler.sendMessageDelayed(handler.obtainMessage(-1), 1000);
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(WelcomeActivity.this, LoginActivity.class);
-                startActivity(intent);
+    }
+
+    @OnClick({R.id.welcome, R.id.tv_second, R.id.layout_skip})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.welcome:
+                String url= (String) SPUtils.get(this,"asUrl",null);
+                if (!url.equals("null")){
+                    continueCount=false;
+                    Intent intent=new Intent(WelcomeActivity.this,MainActivity.class);
+                    intent.putExtra("title","震惊");
+                    intent.putExtra("url",url);
+                    intent.putExtra("from","advertising");
+                    startActivity(intent);
+                    finish();
+                }
+
+                break;
+            case R.id.tv_second:
+                break;
+            case R.id.layout_skip:
+                continueCount=false;
+                toNextActivity();
+                finish();
+                break;
+        }
+    }
+    private int countNum(){//数秒
+        timeCount++;
+        if (timeCount==3){//超过2秒如果没有网络，则进入下一个界面
+            if(!NetUtils.isConnected(WelcomeActivity.this)){
+                continueCount=false;
+                toNextActivity();
                 finish();
             }
-        }, 2000);
+            if (!loginCheckBean.isPlayAd()){//如果服务端不允许播放广告，就直接进入下一个界面
+                continueCount=false;
+                toNextActivity();
+                finish();
+            }else {
+                welcome.setVisibility(View.VISIBLE);
+                layoutSkip.setVisibility(View.VISIBLE);
+
+            }
+        }
+        if (timeCount==initTimeCount){
+            continueCount=false;
+            toNextActivity();
+            finish();
+        }
+        return timeCount;
+    }
+    public void toNextActivity() {//根据是否保存有 token 判断去登录界面还是主界面
+        L.d("到下一个界面");
+        Intent intent = null;
+        String token = (String) SPUtils.get(WelcomeActivity.this, "token", "");
+        if (TextUtils.isEmpty(token)) {
+            intent = new Intent(WelcomeActivity.this, LoginActivity.class);
+        } else {
+            intent = new Intent(WelcomeActivity.this, MainActivity.class);
+            BaseApplication.setToken(token);
+        }
+        startActivity(intent);
+        finish();
+    }
+
+
+    @Override
+    public void showToast(String message) {
+
+    }
+
+    @Override
+    public void showAlertDialog(String title, String message) {
+
+    }
+
+    @Override
+    public void hideProgressDialog() {
+
+    }
+
+    @Override
+    public void showProgressDialog(String message) {
+
+    }
+
+    @Override
+    public void setAdTime(int count) {
+        initTimeCount = count + 3;
+    }
+
+    @Override
+    public void setLoginCheckBean(LoginCheckBean loginCheckBean) {
+        this.loginCheckBean = loginCheckBean;
+    }
+
+    @Override
+    public void setAdImg(Bitmap bitmap) {
+        if (bitmap != null) {
+            welcome.setImageBitmap(bitmap);
+        } else {//加强用户体验，如果是获取到的bitmap为null，则直接跳过
+            continueCount = false;
+            toNextActivity();
+            finish();
+        }
     }
 }
