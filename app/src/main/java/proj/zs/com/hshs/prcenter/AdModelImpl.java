@@ -11,7 +11,8 @@ import rx.Observable;
 import rx.Subscriber;
 
 /**
- * Created by zone on 2017/03/26
+ * Created by zengshi on 2017/03/26
+ * 网络图片地址来源
  */
 
 public class AdModelImpl implements AdContract.Model {
@@ -33,12 +34,12 @@ public class AdModelImpl implements AdContract.Model {
         return Observable.create(new Observable.OnSubscribe<AdMessageBean>() {
             @Override
             public void call(Subscriber<? super AdMessageBean> subscriber) {//假装要展示 3 秒广告，且广告图为如下图
-                subscriber.onNext(new AdMessageBean(3,"http://odjfpxwey.bkt.clouddn.com/2017-3-3-20-141110180-Screenshot_2017-02-23-23-10-26-062_com.tmall.wireless.png","http://www.baidu.com"));
+                subscriber.onNext(new AdMessageBean(3,"http://pic11.photophoto.cn/20090402/0038038040966546_b.jpg","http://www.baidu.com"));
                 subscriber.onCompleted();
             }
         });
     }
-
+//http://pic11.photophoto.cn/20090402/0038038040966546_b.jpg
     public Observable<ResponseBody> downLoadFile(String fileUrl) {
         return retrofitService.downLoadFile(fileUrl);
     }

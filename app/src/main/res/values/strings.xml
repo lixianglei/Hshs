@@ -5,4 +5,6 @@
     <string name="Seal">封/李蹊</string>
     <string name="Policy">策/张亚琴</string>
     <string name="Image_equipment">24866 医学影像设备学</string>
+    <string name="accountName_empty">用户名和密码不得为空</string>
+    <string name="accountNameempty">用户名不得为空</string>
 </resources>

@@ -7,7 +7,7 @@ import proj.zs.com.hshs.model.bean.LoginCheckBean;
 
 
 /**
- * Created by zone on 2017/3/26.
+ * Created by zengshi on 2017/3/26.
  */
 
 public class AdContract {

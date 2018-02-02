@@ -1,7 +1,7 @@
 package proj.zs.com.hshs.model.bean;
 
 /**
- * Created by john on 2016/12/30.
+ * Created by zengshi on 2016/12/30.
  */
 public class AdMessageBean {
     int adTime;//播放广告的时常

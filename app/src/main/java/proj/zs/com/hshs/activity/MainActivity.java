@@ -1,5 +1,6 @@
 package proj.zs.com.hshs.activity;
 
+import android.annotation.SuppressLint;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
@@ -43,6 +44,7 @@ public class MainActivity extends BaseActivity {
     private static boolean isExit = false;
     private final int BACK = 0;
 
+    @SuppressLint("HandlerLeak")
     private Handler mHandler = new Handler() {
 
         @Override

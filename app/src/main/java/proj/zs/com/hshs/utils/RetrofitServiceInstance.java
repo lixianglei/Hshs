@@ -42,7 +42,7 @@ public class RetrofitServiceInstance {
                 Request tokenRequest = null;
                 BaseApplication application = new BaseApplication();
                     if (TextUtils.isEmpty(BaseApplication.getToken())) {
-                    L.d("MyApplication 的token值为空！！！！！！！！！！！！！");
+                    L.d("BaseApplication 的token值为空！！！！！！！！！！！！！");
                     return chain.proceed(originalRequest);
                 }
                     tokenRequest = originalRequest.newBuilder()

@@ -24,7 +24,8 @@ import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
- * Created by zone on 2017/03/26
+ * Created by zengshi on 2017/03/26
+ * 在这里设置广告图片的来源
  */
 
 public class AdPresenterImpl extends PBase<AdContract.View> {

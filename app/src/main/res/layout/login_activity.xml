@@ -48,6 +48,7 @@
             android:src="@drawable/loginusername" />
 
         <EditText
+            android:id="@+id/Login_Name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@null"
@@ -76,6 +77,7 @@
             android:src="@drawable/loginusername" />
 
         <EditText
+            android:id="@+id/Login_pwd"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@null"
@@ -94,7 +96,8 @@
         android:layout_marginTop="@dimen/px26"
         android:text="记住用户名" />
 
-    <TextView
+    <Button
+        android:id="@+id/Login_Btn"
         android:layout_width="@dimen/px576"
         android:layout_height="@dimen/px80"
         android:layout_below="@id/login_save_pwd"

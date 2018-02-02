@@ -1,5 +1,6 @@
 package proj.zs.com.hshs.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -32,17 +33,14 @@ import proj.zs.com.hshs.utils.SPUtils;
 
 public class WelcomeActivity extends Activity implements AdContract.View {
     int timeCount = 0;
-//    @BindView(R.id.welcome)
-//    ImageView welcome;
     private ImageView welcome;
     @BindView(R.id.tv_second)
     TextView tvSecond;
-//    @BindView(R.id.layout_skip)
-//    LinearLayout layoutSkip;
     private LinearLayout layoutSkip;
     private LoginCheckBean loginCheckBean;
     boolean continueCount = true;
 
+    @SuppressLint("HandlerLeak")
     Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -91,7 +89,6 @@ public class WelcomeActivity extends Activity implements AdContract.View {
                     startActivity(intent);
                     finish();
                 }
-
                 break;
             case R.id.tv_second:
                 break;
