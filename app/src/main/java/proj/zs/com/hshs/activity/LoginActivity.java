@@ -45,6 +45,7 @@ public class LoginActivity extends BaseActivity {
         }
     };
 
+
     @Override
     protected int layoutId() {
         return R.layout.login_activity;

@@ -28,6 +28,7 @@ public class PersonActivity extends BaseActivity {
     @Override
     protected void loadData() {
 
+
     }
 
     @Override

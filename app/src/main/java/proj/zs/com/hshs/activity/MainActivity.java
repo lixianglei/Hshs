@@ -81,6 +81,7 @@ public class MainActivity extends BaseActivity {
         return super.onKeyDown(keyCode, event);
     }
 
+
     private void exit() {
         if (!isExit) {
             isExit = true;

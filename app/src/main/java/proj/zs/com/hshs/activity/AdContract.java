@@ -11,6 +11,7 @@ import proj.zs.com.hshs.model.bean.LoginCheckBean;
  */
 
 public class AdContract {
+
 public interface View extends IBaseView {
     void setAdTime(int count);
 

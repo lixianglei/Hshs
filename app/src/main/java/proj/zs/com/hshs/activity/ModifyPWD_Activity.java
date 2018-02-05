@@ -41,7 +41,6 @@ public class ModifyPWD_Activity extends BaseActivity {
             }
 
         });
-
     }
 
     @Override

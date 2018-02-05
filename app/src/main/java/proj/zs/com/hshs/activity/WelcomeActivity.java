@@ -67,6 +67,7 @@ public class WelcomeActivity extends Activity implements AdContract.View {
         pAd = new AdPresenterImpl();
         pAd.attachView((AdContract.View) this);
         initTimeCount = 6;
+
         loginCheckBean = new LoginCheckBean();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         if (NetUtils.isConnected(WelcomeActivity.this)) {

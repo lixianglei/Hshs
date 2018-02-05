@@ -10,6 +10,7 @@ import proj.zs.com.hshs.base.BaseActivity;
  */
 
 public class DetailsActivity extends BaseActivity{
+
     @Override
     protected int layoutId() {
         return 0;
