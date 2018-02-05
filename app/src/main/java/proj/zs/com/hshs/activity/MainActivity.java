@@ -1,6 +1,7 @@
 package proj.zs.com.hshs.activity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
@@ -24,22 +25,7 @@ import proj.zs.com.hshs.base.BaseActivity;
 import proj.zs.com.hshs.fragment.Home_Fragment;
 
 public class MainActivity extends BaseActivity {
-    @BindView(R.id.Home_Btn_News)
-    RadioButton HomeBtnNews;
-    @BindView(R.id.Fiction_Btn)
-    RadioButton FictionBtn;
-    @BindView(R.id.Rankind_Btn)
-    RadioButton RankindBtn;
-    @BindView(R.id.Appreciate_Btn)
-    RadioButton AppreciateBtn;
-    @BindView(R.id.Mine_Btn)
-    RadioButton MineBtn;
-    @BindView(R.id.Home_RGroup)
-    RadioGroup HomeRGroup;
-    @BindView(R.id.Home_Bottom)
-    RelativeLayout HomeBottom;
-    @BindView(R.id.z)
-    RelativeLayout z;
+    private RadioButton mine_btn;
     private PDFView pdfView;
     private static boolean isExit = false;
     private final int BACK = 0;
@@ -63,11 +49,21 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        mine_btn=findViewById(R.id.Mine_Btn);
+
 
     }
 
     @Override
     protected void initListener() {
+        mine_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,PersonActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
     }
 

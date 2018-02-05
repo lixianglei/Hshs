@@ -6,11 +6,10 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.view.KeyEvent;
 
-import butterknife.ButterKnife;
 import proj.zs.com.hshs.activity.App;
 
 /**
- * Created by ASUS on 2017/4/11.
+ * Created by zengshi on 2017/4/11.
  */
 
 public abstract class BaseActivity extends FragmentActivity {
@@ -23,11 +22,12 @@ public abstract class BaseActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         App.activity = this;
         setContentView(layoutId());
-        ButterKnife.bind(this);
+//        ButterKnife.bind(this);
         fragmentManager = getSupportFragmentManager();
         initData();
         initListener();
         loadData();
+        onBackPressed();
     }
 
     @Override

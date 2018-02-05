@@ -15,10 +15,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
-import butterknife.OnClick;
 import proj.zs.com.hshs.R;
 import proj.zs.com.hshs.base.BaseApplication;
 import proj.zs.com.hshs.model.bean.LoginCheckBean;
@@ -29,13 +25,12 @@ import proj.zs.com.hshs.utils.SPUtils;
 
 /**
  * Created by zengshi on 2018/1/31.
+ * 欢迎页Activity
  */
 
 public class WelcomeActivity extends Activity implements AdContract.View {
     int timeCount = 0;
     private ImageView welcome;
-    @BindView(R.id.tv_second)
-    TextView tvSecond;
     private LinearLayout layoutSkip;
     private LoginCheckBean loginCheckBean;
     boolean continueCount = true;
@@ -61,7 +56,14 @@ public class WelcomeActivity extends Activity implements AdContract.View {
         setContentView(R.layout.welcome_acticvity);
         welcome=findViewById(R.id.welcome);
         layoutSkip=findViewById(R.id.layout_skip);
-        ButterKnife.bind(this);
+        layoutSkip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                continueCount=false;
+                toNextActivity();
+                finish();
+            }
+        });
         pAd = new AdPresenterImpl();
         pAd.attachView((AdContract.View) this);
         initTimeCount = 6;
@@ -70,35 +72,37 @@ public class WelcomeActivity extends Activity implements AdContract.View {
         if (NetUtils.isConnected(WelcomeActivity.this)) {
             pAd.getLoginCheck();
         }
+
+
 //        layoutSkip.setVisibility(View.INVISIBLE);
         handler.sendMessageDelayed(handler.obtainMessage(-1), 1000);
 
     }
 
-    @OnClick({R.id.welcome, R.id.tv_second, R.id.layout_skip})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.welcome:
-                String url= (String) SPUtils.get(this,"asUrl",null);
-                if (!url.equals("null")){
-                    continueCount=false;
-                    Intent intent=new Intent(WelcomeActivity.this,MainActivity.class);
-                    intent.putExtra("title","震惊");
-                    intent.putExtra("url",url);
-                    intent.putExtra("from","advertising");
-                    startActivity(intent);
-                    finish();
-                }
-                break;
-            case R.id.tv_second:
-                break;
-            case R.id.layout_skip:
-                continueCount=false;
-                toNextActivity();
-                finish();
-                break;
-        }
-    }
+//    @OnClick({R.id.welcome, R.id.tv_second, R.id.layout_skip})
+//    public void onViewClicked(View view) {
+//        switch (view.getId()) {
+//            case R.id.welcome:
+//                String url= (String) SPUtils.get(this,"asUrl",null);
+//                if (!url.equals("null")){
+//                    continueCount=false;
+//                    Intent intent=new Intent(WelcomeActivity.this,MainActivity.class);
+//                    intent.putExtra("title","震惊");
+//                    intent.putExtra("url",url);
+//                    intent.putExtra("from","advertising");
+//                    startActivity(intent);
+//                    finish();
+//                }
+//                break;
+//            case R.id.tv_second:
+//                break;
+//            case R.id.layout_skip:
+//                continueCount=false;
+//                toNextActivity();
+//                finish();
+//                break;
+//        }
+//    }
     private int countNum(){//数秒
         timeCount++;
         if (timeCount==3){//超过2秒如果没有网络，则进入下一个界面
