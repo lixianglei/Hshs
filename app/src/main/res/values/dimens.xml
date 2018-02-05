@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <resources>
     <dimen name="Twenty">20sp</dimen>
-
-
     <dimen name="px1">0.5dp</dimen>
     <dimen name="px2">1dp</dimen>
     <dimen name="px4">2dp</dimen>

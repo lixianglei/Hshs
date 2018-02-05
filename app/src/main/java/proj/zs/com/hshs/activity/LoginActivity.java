@@ -2,14 +2,15 @@ package proj.zs.com.hshs.activity;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.Toast;
 
 
@@ -22,29 +23,20 @@ import proj.zs.com.hshs.base.BaseActivity;
  */
 
 public class LoginActivity extends BaseActivity {
-    private Button login_btn;
+    private Button login;
+    private EditText uname=null;
+    private EditText upswd=null;
+    private CheckBox checkBoxButton=null;
+
     //声明变量
     private Handler handler;
-    private SharedPreferences mShared;
+    private SharedPreferences sp;
     private SharedPreferences.Editor mEditor;
     private ProgressDialog progressDialog;
     private static boolean isExit = false;
     private final int FAILURE = 0;
     private final int BACK = 0;
     private final int SUCCESS = 1;
-
-    @SuppressLint("HandlerLeak")
-    private Handler mHandler = new Handler() {
-
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if (msg.what == 0) {
-                isExit = false;
-            }
-        }
-    };
-
 
     @Override
     protected int layoutId() {
@@ -53,26 +45,77 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-      login_btn=findViewById(R.id.Login_Btn);
+      sp=this.getSharedPreferences("userinfo", Context.MODE_PRIVATE);
+      login=findViewById(R.id.Login_Btn);
+      checkBoxButton=findViewById(R.id.login_save_pwd);
+      upswd=findViewById(R.id.Login_pwd);
+      uname=findViewById(R.id.Login_Name);
+      if (sp.getBoolean("checkboxBoolean",false)){
+          uname.setText(sp.getString("uname",null));
+          upswd.setText(sp.getString("upswd",null));
+          checkBoxButton.setChecked(true);
+      }
     }
 
     @Override
     protected void initListener() {
-        login_btn.setOnClickListener(new View.OnClickListener() {
+        login.setOnClickListener(new View.OnClickListener() {
             @Override
         public void onClick(View v) {
-            Intent intent=new Intent(LoginActivity.this,ModifyPWD_Activity.class);
-            startActivity(intent);
-            finish();
+                if (v==login){
+                    String name=uname.getText().toString();
+                    String pswd=upswd.getText().toString();
+                    if (name.trim().equals("")){
+                        Toast.makeText(LoginActivity.this, "请您输入用户名！", Toast.LENGTH_SHORT).show();
+                        return;
+                     }
+                     if (pswd.trim().equals("")){
+                         Toast.makeText(LoginActivity.this, "请您输入密码！", Toast.LENGTH_SHORT).show();
+                         return;
+                      }
+                      boolean CheckBoxLogin=checkBoxButton.isChecked();
+                     //记住密码
+                    if (CheckBoxLogin){
+                        mEditor=sp.edit();
+                        mEditor.putString("uname",name);
+                        mEditor.putString("upswd",pswd);
+                        mEditor.putBoolean("checkboxBoolean",true);
+                        mEditor.commit();
+                    }
+                    else {
+                        mEditor=sp.edit();
+                        mEditor.putString("uname",null);
+                        mEditor.putString("upswd",null);
+                        mEditor.putBoolean("checkboxBoolean",false);
+                        mEditor.commit();
+                    }
+                    //Intent跳转
+                    Intent intent=new Intent(LoginActivity.this,ModifyPWD_Activity.class);
+                    startActivity(intent);
+                }
         }
     });
-
     }
 
     @Override
     protected void loadData() {
 
     }
+    @SuppressLint("HandlerLeak")
+    private Handler mHandler = new Handler() {
+
+//        @Override
+//        public void handleMessage(Message msg) {
+//            super.handleMessage(msg);
+//            switch (msg.what){
+//                case FAILURE:
+//                    progressDialog.dismiss();
+//                    mEditor.putBoolean(SPKeyUtils.ISLOGIN,false);
+//                    mEditor.commit();
+//                    Toast.makeText(LoginActivity.this, msg.obj.toString(), Toast.LENGTH_SHORT).show();
+//            }
+//        }
+    };
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {

@@ -27,7 +27,6 @@ public abstract class BaseActivity extends FragmentActivity {
         initData();
         initListener();
         loadData();
-        onBackPressed();
     }
 
     @Override
@@ -61,6 +60,7 @@ public abstract class BaseActivity extends FragmentActivity {
 
     @Override
     public void onBackPressed() {
-
+        super.onBackPressed();
+        finish();
     }
 }

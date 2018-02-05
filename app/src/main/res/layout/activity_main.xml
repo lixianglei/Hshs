@@ -115,9 +115,5 @@
                 android:paddingTop="13dp"
                 />
         </RadioGroup>
-
-
     </RelativeLayout>
-
-
 </RelativeLayout>
