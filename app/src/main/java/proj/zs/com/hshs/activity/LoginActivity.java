@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -23,7 +24,7 @@ import proj.zs.com.hshs.base.BaseActivity;
  */
 
 public class LoginActivity extends BaseActivity {
-    private Button login;
+    private TextView login;
     private EditText uname=null;
     private EditText upswd=null;
     private CheckBox checkBoxButton=null;
@@ -43,6 +44,7 @@ public class LoginActivity extends BaseActivity {
         return R.layout.login_activity;
     }
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void initData() {
       sp=this.getSharedPreferences("userinfo", Context.MODE_PRIVATE);
@@ -90,7 +92,8 @@ public class LoginActivity extends BaseActivity {
                         mEditor.commit();
                     }
                     //Intent跳转
-                    Intent intent=new Intent(LoginActivity.this,ModifyPWD_Activity.class);
+                    Intent intent=new Intent(LoginActivity.this,MainActivity.class);
+
                     startActivity(intent);
                 }
         }

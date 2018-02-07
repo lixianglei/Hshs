@@ -2,108 +2,60 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
+        android:id="@+id/one"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="HomeFragment"/>
-    <LinearLayout
+        android:layout_height="56dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/ground">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="17.5dp"
+            android:src="@drawable/main_search" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/Hshs"
+            android:textColor="@color/black"
+            android:textSize="@dimen/Twenty" />
+
+        <ImageView
+            android:id="@+id/Menu_Mesage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="17.5dp"
+            android:src="@drawable/main_notify" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_below="@+id/one"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <ImageView
-            android:id="@+id/home_serch"
-            android:layout_width="21dp"
-            android:layout_height="21dp"
-            />
-    </LinearLayout>
-    <RelativeLayout
-        android:id="@+id/Home_Bottom"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_alignParentBottom="true">
-
-        <RadioGroup
-            android:background="@color/black"
-            android:id="@+id/Home_RGroup"
+        <com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView
+            android:id="@+id/pullLoadMoreRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:weightSum="5">
-
-            <RadioButton
-                android:id="@+id/Home_Btn_News"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                android:button="@null"
-                android:paddingTop="15dp"
-                android:drawableTop="@drawable/nav_btn_home_selected" />
-
-            <RadioButton
-                android:id="@+id/Home_Btn_Tweet"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:button="@null"
-                android:drawablePadding="1dp"
-                android:drawableTop="@drawable/nav_btn_fenlei_unselected"
-                android:gravity="center"
-                android:paddingTop="15dp" />
-
-            <RadioButton
-
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:button="@null"
-                android:drawablePadding="3dp"
-                android:drawableTop="@drawable/nav_btn_paihang_unselected"
-                android:gravity="center"
-                android:paddingTop="15dp"
-                android:textColor="#7D7D7D"
-
-                android:textSize="14sp" />
-
-            <RadioButton
-                android:id="@+id/Home_Btn_Discover"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:button="@null"
-                android:drawableTop="@drawable/nav_btn_shoucang_unselected"
-                android:gravity="center"
-                android:paddingTop="15dp"
-               />
-
-            <RadioButton
-                android:id="@+id/Home_Btn_Mine"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:button="@null"
-                android:drawableTop="@drawable/nav_btn_personal_unselected"
-                android:gravity="center"
-                android:paddingTop="15dp"
-
-                />
-            <RadioButton
-                android:id="@+id/Home_Btn"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:button="@null"
-                android:drawablePadding="3dp"
-                android:drawableTop="@mipmap/ic_launcher"
-                android:gravity="center"
-                android:paddingTop="3dp"
-                android:textColor="#7D7D7D"
-                android:textSize="14sp" />
-
-        </RadioGroup>
-
-
+            android:layout_height="match_parent" />
     </RelativeLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floating_btn_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="70dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginRight="35dp"
+        app:elevation="1dp"
+        android:src="@drawable/shouye_button_xuanfu_unselected"
+        />
 
 </RelativeLayout>

@@ -53,10 +53,15 @@ public class ModifyPWD_Activity extends BaseActivity implements TextWatcher,View
         et_new.addTextChangedListener((TextWatcher) this);
         bt_confirm.setSelected(false);
         bt_confirm.setOnClickListener((View.OnClickListener) this);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 //        bt_confirm.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                Toast.makeText(ModifyPWD_Activity.this, "发送网络请求提交密码", Toast.LENGTH_SHORT).show();
 //            }
 //        });
         et_orgin.setOnTouchListener(new View.OnTouchListener() {
@@ -132,6 +137,9 @@ public class ModifyPWD_Activity extends BaseActivity implements TextWatcher,View
                     requstFocus(et_orgin, "原密码错误", Color.RED, true);
                 }else{
                     Toast.makeText(ModifyPWD_Activity.this, "修改成功", Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(ModifyPWD_Activity.this,MainActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
                 dialog.dismiss();
             }

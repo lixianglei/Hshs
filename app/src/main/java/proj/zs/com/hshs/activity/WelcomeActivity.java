@@ -143,7 +143,6 @@ public class WelcomeActivity extends Activity implements AdContract.View {
         finish();
     }
 
-
     @Override
     public void showToast(String message) {
 

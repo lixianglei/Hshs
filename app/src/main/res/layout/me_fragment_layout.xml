@@ -126,7 +126,7 @@
                 android:layout_centerInParent="true"
                 android:gravity="center"
                 android:text="作品集"
-                android:textColor="#2B2B2B"
+                android:textColor="@color/TextColor"
                 android:textSize="14sp" />
 
             <View
@@ -146,21 +146,45 @@
 
 
             <TextView
+                android:id="@+id/my_share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="我的分享"
+                android:textColor="@color/TextColor"
+                android:textSize="14sp" />
+
+            <!--<View-->
+                <!--android:layout_width="20dp"-->
+                <!--android:layout_height="2dp"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:background="#1259fe" />-->
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+
+            <TextView
                 android:id="@+id/tv_concerned_users"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:gravity="center"
                 android:text="关注的用户"
-                android:textColor="#1c5ffa"
+                android:textColor="@color/TextColor"
                 android:textSize="14sp" />
 
-            <View
-                android:layout_width="20dp"
-                android:layout_height="2dp"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:background="#1259fe" />
+            <!--<View-->
+                <!--android:layout_width="20dp"-->
+                <!--android:layout_height="2dp"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:background="#1259fe" />-->
 
         </RelativeLayout>
     </LinearLayout>
