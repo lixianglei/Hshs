@@ -2,15 +2,14 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center_vertical">
-
     <RelativeLayout
-        android:id="@+id/l"
+        android:id="@+id/one"
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_alignParentTop="true"
         android:background="@color/ground">
-
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -22,11 +21,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="分类"
+            android:text="@string/FenLei"
             android:textColor="@color/black"
             android:textSize="@dimen/Twenty" />
 
         <ImageView
+            android:id="@+id/Menu_Mesage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -34,5 +34,47 @@
             android:layout_marginRight="17.5dp"
             android:src="@drawable/title_button_menu_unselected" />
     </RelativeLayout>
+<LinearLayout
+    android:id="@+id/Two"
+    android:layout_below="@+id/one"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
+    <android.support.design.widget.TabLayout
+        android:id="@+id/toolbar_tab"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_gravity="bottom"
+        android:background="#ffffff"
+        android:fillViewport="false"
+        app:layout_scrollFlags="scroll"
+        app:tabIndicatorColor="#1259fe"
+        app:tabIndicatorHeight="2.0dp"
+        app:tabSelectedTextColor="#1259fe"
+        app:tabTextColor="#151515">
 
+
+        <!--布局选择器-->
+        <!--android:icon="@drawable/tab_selector"-->
+        <android.support.design.widget.TabItem
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="学科" />
+
+        <android.support.design.widget.TabItem
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="上传时间" />
+
+    </android.support.design.widget.TabLayout>
+</LinearLayout>
+    <RelativeLayout
+        android:layout_below="@+id/Two"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView
+            android:id="@+id/fication_pullLoadMoreRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
 </RelativeLayout>

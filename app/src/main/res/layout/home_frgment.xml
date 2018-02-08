@@ -34,17 +34,23 @@
             android:layout_marginRight="17.5dp"
             android:src="@drawable/main_notify" />
     </RelativeLayout>
+
     <RelativeLayout
         android:layout_below="@+id/one"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <ScrollView
+            android:id="@+id/sc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
         <com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView
             android:id="@+id/pullLoadMoreRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+        </ScrollView>
     </RelativeLayout>
-
-    <android.support.design.widget.FloatingActionButton
+    <ImageView
         android:id="@+id/floating_btn_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -54,8 +60,6 @@
         android:layout_marginBottom="70dp"
         android:layout_marginEnd="35dp"
         android:layout_marginRight="35dp"
-        app:elevation="1dp"
         android:src="@drawable/shouye_button_xuanfu_unselected"
         />
-
 </RelativeLayout>

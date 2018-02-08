@@ -1,11 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <TextView
+    <RelativeLayout
+        android:id="@+id/one"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="排行榜fragment"/>
+        android:layout_height="56dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/ground">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="17.5dp"
+            android:src="@drawable/main_search" />
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/PaiHang"
+            android:textColor="@color/black"
+            android:textSize="@dimen/Twenty" />
+        <ImageView
+            android:id="@+id/Ranking_Time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="17.5dp"
+            android:src="@drawable/paihangbang_button_shijian_normal" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_below="@+id/one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.wuxiaolong.pullloadmorerecyclerview.PullLoadMoreRecyclerView
+            android:id="@+id/rank_pullLoadMoreRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -26,6 +26,7 @@ import proj.zs.com.hshs.base.BaseActivity;
 import proj.zs.com.hshs.fragment.Appreciate_Fragment;
 import proj.zs.com.hshs.fragment.Fication_Fragment;
 import proj.zs.com.hshs.fragment.Home_Fragment;
+import proj.zs.com.hshs.fragment.Me_Fragment;
 import proj.zs.com.hshs.fragment.Mine_Fragment;
 import proj.zs.com.hshs.fragment.Ranking_Fragment;
 
@@ -72,7 +73,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
         fragments.add(new Fication_Fragment());
         fragments.add(new Ranking_Fragment());
         fragments.add(new Appreciate_Fragment());
-        fragments.add(new Mine_Fragment());
+        fragments.add(new Me_Fragment());
     }
 
     /**
@@ -150,6 +151,7 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
 
     @Override
     protected void loadData() {
+
 
     }
     @SuppressLint("HandlerLeak")

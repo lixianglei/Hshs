@@ -1,5 +1,6 @@
 package proj.zs.com.hshs.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,11 +40,12 @@ import proj.zs.com.hshs.base.BaseFragment;
 
 public class Home_Fragment extends BaseFragment {
     private ImageView popup_mbtn;
-    private FloatingActionButton mFloatBtn;
+    private ImageView mFloatBtn;
     private List<String> mList;
     private PullLoadMoreRecyclerView mPullLoadMoreRecyclerView;
     private int mCount=1;
     private RecyclerViewAdapter mRecyclerViewAdapter;
+    private ScrollView scrollView;
 
     @Override
     protected int layoutId() {
@@ -52,6 +55,7 @@ public class Home_Fragment extends BaseFragment {
 
     @Override
     protected void initData() {
+        scrollView=view.findViewById(R.id.sc);
         popup_mbtn = view.findViewById(R.id.Menu_Mesage);//获取弹出按钮控件
         mFloatBtn=view.findViewById(R.id.floating_btn_main);//获取悬浮按钮控件
         mPullLoadMoreRecyclerView=view.findViewById(R.id.pullLoadMoreRecyclerView);
@@ -106,6 +110,13 @@ public class Home_Fragment extends BaseFragment {
         mFloatBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                scrollView.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        scrollView.fullScroll(ScrollView.FOCUS_UP);
+                    }
+                });
+
             }
         });
         popup_mbtn.setOnClickListener(new View.OnClickListener() {

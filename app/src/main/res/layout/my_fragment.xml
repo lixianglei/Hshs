@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinator_Layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   >
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:contentScrim="#145ae6"
+            app:expandedTitleMarginEnd="48dp"
+            app:expandedTitleMarginStart="48dp"
+            app:expandedTitleTextAppearance="@style/transparentText"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            <!--设置layout_scrollFlags保证CollapsingToolbarLayout能滚动-->
+            <!--app:layout_scrollFlags="scroll|exitUntilCollapsed"-->
+
+
+            <LinearLayout
+                android:id="@+id/head_layout"
+                android:layout_width="360dp"
+                android:layout_height="199dp"
+                android:background="@color/text_color"
+                android:orientation="vertical"
+                android:src="@drawable/me_title_bg">
+                <!--添加控件，上滑时固定顶部标题栏-->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#00000000"
+                    android:padding="16dp">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/me_title_search" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/me_title_notify" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/head_iv"
+                    android:layout_width="58dp"
+                    android:layout_height="58dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/me_title_notify" />
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:text="李 蹊"
+                    android:layout_marginTop="19dp"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/me_zan"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        android:text="357"
+                        android:textColor="#FFFFFF"
+                        android:textSize="6sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:drawableLeft="@drawable/me_zan"
+                        android:drawablePadding="5dp"
+                        android:gravity="center"
+                        android:text="670"
+                        android:textColor="#FFFFFF"
+                        android:textSize="6sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:paddingBottom="6dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="6dp">
+                </LinearLayout>
+            </LinearLayout>
+            <!--Toolbar放在下面不然会被挡住-->
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/toolbar_tab"
+            android:layout_width="match_parent"
+            android:layout_height="32.5dp"
+            android:layout_gravity="bottom"
+            android:background="#ffffff"
+            android:fillViewport="false"
+            app:layout_scrollFlags="scroll"
+            app:tabIndicatorColor="#1259fe"
+            app:tabIndicatorHeight="2.0dp"
+            app:tabSelectedTextColor="#1259fe"
+            app:tabTextColor="#151515">
+
+
+            <!--布局选择器-->
+            <!--android:icon="@drawable/tab_selector"-->
+            <android.support.design.widget.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="我的书" />
+
+            <android.support.design.widget.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="我的分享" />
+
+            <android.support.design.widget.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="关注的用户" />
+
+
+        </android.support.design.widget.TabLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/nsv"
+        android:background="#E3E8E9"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <android.support.v4.view.ViewPager
+            android:background="#E3E8E9"
+            android:id="@+id/main_vp_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    </android.support.v4.widget.NestedScrollView>
+    <!--在CoordinatorLayout中只要是能滑动控件的都需要设置layout_behavior-->
+    <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+</android.support.design.widget.CoordinatorLayout>
