@@ -151,7 +151,7 @@ public class Me_Fragment extends BaseFragment {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
                 if(verticalOffset<= -headLayout.getHeight()/2){
-                    collapsingToolbarLayout.setTitle("个人中心");
+                    collapsingToolbarLayout.setTitle(" 个人中心");
                     //使用下面两个CollapsingToolbarLayout的方法设置展开透明->折叠时你想要的颜色
                     collapsingToolbarLayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
                     collapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.ground));

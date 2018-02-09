@@ -20,13 +20,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--登录界面-->
         <activity android:name=".activity.LoginActivity"></activity>
+        <!--修改密码界面-->
         <activity android:name=".activity.ModifyPWD_Activity"></activity>
+
         <activity android:name=".activity.PersonActivity"></activity>
         <activity android:name=".activity.MainActivity">
 
         </activity>
+        <!---->
         <activity android:name=".activity.Activity_Fragment"></activity>
+        <!--//首页搜索界面-->
+        <activity android:name=".activity.Home_SearchActivity"></activity>
+
+        <!--//内容上传界面-->
+        <activity android:name=".activity.Content_uploadActivity"></activity>
     </application>
 
 </manifest>

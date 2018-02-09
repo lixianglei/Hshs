@@ -4,13 +4,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <RelativeLayout
         android:id="@+id/one"
         android:layout_width="match_parent"
         android:layout_height="56dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:background="@color/ground">
+
         <ImageView
+            android:id="@+id/Home_Search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -26,7 +31,7 @@
             android:textSize="@dimen/Twenty" />
 
         <ImageView
-            android:id="@+id/Menu_Mesage"
+            android:id="@+id/Home_Message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

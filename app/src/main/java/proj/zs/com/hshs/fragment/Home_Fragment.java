@@ -2,6 +2,7 @@ package proj.zs.com.hshs.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -28,6 +29,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import proj.zs.com.hshs.R;
+import proj.zs.com.hshs.activity.Content_uploadActivity;
+import proj.zs.com.hshs.activity.Home_SearchActivity;
 import proj.zs.com.hshs.adapter.RecyclerViewAdapter;
 import proj.zs.com.hshs.base.BaseApplication;
 import proj.zs.com.hshs.base.BaseFragment;
@@ -41,6 +44,7 @@ import proj.zs.com.hshs.base.BaseFragment;
 public class Home_Fragment extends BaseFragment {
     private ImageView popup_mbtn;
     private ImageView mFloatBtn;
+    private ImageView search,message;//首页搜索，消息图片
     private List<String> mList;
     private PullLoadMoreRecyclerView mPullLoadMoreRecyclerView;
     private int mCount=1;
@@ -50,13 +54,12 @@ public class Home_Fragment extends BaseFragment {
     @Override
     protected int layoutId() {
         return R.layout.home_frgment;
-
     }
-
     @Override
     protected void initData() {
+        search=view.findViewById(R.id.Home_Search);
         scrollView=view.findViewById(R.id.sc);
-        popup_mbtn = view.findViewById(R.id.Menu_Mesage);//获取弹出按钮控件
+        popup_mbtn = view.findViewById(R.id.Home_Message);//获取弹出按钮控件
         mFloatBtn=view.findViewById(R.id.floating_btn_main);//获取悬浮按钮控件
         mPullLoadMoreRecyclerView=view.findViewById(R.id.pullLoadMoreRecyclerView);
         mPullLoadMoreRecyclerView.setGridLayout(2);
@@ -106,16 +109,20 @@ public class Home_Fragment extends BaseFragment {
     }
     @Override
     protected void initListener() {
-        //点击悬浮按钮回到顶部
+        //点击搜索跳转搜索界面
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(BaseApplication.getInstance().context, Home_SearchActivity.class);
+                startActivity(intent);
+            }
+        });
+        //点击悬浮按钮回跳转到内容上传界面
         mFloatBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                scrollView.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        scrollView.fullScroll(ScrollView.FOCUS_UP);
-                    }
-                });
+                Intent intent=new Intent(BaseApplication.getInstance().context, Content_uploadActivity.class);
+                startActivity(intent);
 
             }
         });

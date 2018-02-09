@@ -25,8 +25,6 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
             <!--设置layout_scrollFlags保证CollapsingToolbarLayout能滚动-->
             <!--app:layout_scrollFlags="scroll|exitUntilCollapsed"-->
-
-
             <LinearLayout
                 android:id="@+id/head_layout"
                 android:layout_width="360dp"
@@ -89,7 +87,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
-                        android:drawableLeft="@drawable/me_zan"
+                        android:drawableLeft="@drawable/gerenzhongxin_icon_liulan_normal"
                         android:drawablePadding="5dp"
                         android:gravity="center"
                         android:text="670"

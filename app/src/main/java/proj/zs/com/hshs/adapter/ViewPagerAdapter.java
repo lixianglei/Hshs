@@ -11,7 +11,7 @@ import proj.zs.com.hshs.fragment.PageFragment;
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 
     final int PAGE_COUNT = 5;
-    private String tabTitles[] = new String[]{ "我的书", "我的分享", "关注的用户"};
+    private String tabTitles[] = new String[]{ "", "我的分享", "关注的用户"};
     private Context context;
 
     public ViewPagerAdapter(FragmentManager fm, Context context) {

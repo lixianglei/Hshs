@@ -1,18 +1,13 @@
 package proj.zs.com.hshs.activity;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.PopupMenu;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -27,7 +22,6 @@ import proj.zs.com.hshs.fragment.Appreciate_Fragment;
 import proj.zs.com.hshs.fragment.Fication_Fragment;
 import proj.zs.com.hshs.fragment.Home_Fragment;
 import proj.zs.com.hshs.fragment.Me_Fragment;
-import proj.zs.com.hshs.fragment.Mine_Fragment;
 import proj.zs.com.hshs.fragment.Ranking_Fragment;
 
 public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
@@ -40,11 +34,10 @@ public class MainActivity extends BaseActivity implements RadioGroup.OnCheckedCh
     private ArrayList<Fragment> fragments;
     private RadioGroup rgGroup;
 
-    private Appreciate_Fragment appreciate_fragment;
-    private Fication_Fragment fication_fragment;
-    private Home_Fragment home_fragment;
-    private Mine_Fragment mine_fragment;
-    private Ranking_Fragment ranking_fragment;
+//    private Appreciate_Fragment appreciate_fragment;
+//    private Fication_Fragment fication_fragment;
+//    private Home_Fragment home_fragment;
+//    private Ranking_Fragment ranking_fragment;
 
     @Override
     protected int layoutId() {
